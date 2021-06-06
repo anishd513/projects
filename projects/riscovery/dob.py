@@ -62,18 +62,28 @@ def dob_number:
   print('Enter DOB: ')
   date = input()            #[22 10 1998]
   DOB = []
-  date = date.split(" ")    #[22 10 1998]
-  date = np.array(date)
-  birthday = ""
-  for i in range (len(date)):
-    if len(date[0]) <= 2:
-      birthday += date[i]
-      birthday += "/"
-    else:
-      birthday += date[len(date)-i-1]
-      birthday += "/"
-  birthday = birthday[:-1]
-  bday = []
-  bday.append(birthday)
-  print(bday)
+date = date.split(" ")    #[22 10 1998]
+
+date[2] = " ".join(date[2:])
+date = date[0:3]
+if date[0].isalpha():
+  for d in date:
+    print(d)
+    d = w2n.word_to_num(d)
+    DOB.append(d)
+print("date", date)
+date = np.array(DOB)
+print(date)
+birthday = ""
+for i in range (len(date)):
+      if date[0] <= 31:
+        birthday += str(date[i]) 
+        birthday += "/"
+      else:
+        birthday += date[len(date)-i-1]
+        birthday += "/"
+birthday = birthday[:-1]
+bday = []
+bday.append(birthday)
+print(bday)
 
